@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Sorriso Radiante | Odontologia Humanizada & Estética</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        whatsapp: {
+                            DEFAULT: '#25D366',
+                            hover: '#20ba5a',
+                            dark: '#128C7E'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Mobile-first touch enhancements */
+        button, a, select, input {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hero-mobile-overlay {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(13, 148, 136, 0.88) 50%, rgba(15, 23, 42, 0.95) 100%);
+        }
+        /* Smooth horizontal snap carousel for mobile cards */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 0.3; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .pulse-ring-effect {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden pb-20 md:pb-0">
+
+    <!-- Top Urgent Notice Banner for Mobile -->
+    <div class="bg-brand-900 text-teal-100 text-xs py-2 px-3 text-center flex items-center justify-center gap-2 border-b border-brand-800">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
+        <span class="truncate font-medium">Atendimento hoje em Recife • Consultório climatizado com manobrista</span>
+    </div>
+
+    <!-- Header / Navbar Optimized for Mobile First -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+                    <i class="fa-solid fa-tooth text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 block leading-tight">Sorriso<span class="text-brand-600">Radiante</span></span>
+                    <span class="text-[10px] sm:text-xs text-slate-500 font-medium block">Odontologia Humanizada</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium text-slate-600">
+                <a href="#inicio" class="hover:text-brand-600 transition">Início</a>
+                <a href="#tratamentos" class="hover:text-brand-600 transition">Tratamentos</a>
+                <a href="#sobre" class="hover:text-brand-600 transition">Por Que Nós</a>
+                <a href="#depoimentos" class="hover:text-brand-600 transition">Depoimentos</a>
+                <a href="#contato" class="hover:text-brand-600 transition">Localização</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <!-- Desktop Direct WhatsApp Button -->
+                <a href="https://wa.me/5581999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20odontol%C3%B3gica!" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Agendar WhatsApp</span>
+                </a>
+
+                <!-- Mobile Phone Quick Button (Click to Call) -->
+                <a href="tel:5581999999999" class="md:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-teal-50 text-brand-700 border border-teal-200" aria-label="Ligar para a clínica">
+                    <i class="fa-solid fa-phone text-sm"></i>
+                </a>
+
+                <!-- Mobile Menu Hamburger -->
+                <button id="mobileMenuBtn" aria-label="Abrir menu" class="md:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100">
+                    <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-5 py-4 shadow-xl">
+            <div class="flex flex-col space-y-3 text-sm font-medium text-slate-700">
+                <a href="#inicio" class="mobile-link py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Início</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+                </a>
+                <a href="#tratamentos" class="mobile-link py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Tratamentos & Prevenção</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+                </a>
+                <a href="#sobre" class="mobile-link py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Por Que Escolher Nossa Clínica</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+                </a>
+                <a href="#depoimentos" class="mobile-link py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>O Que Dizem os Pacientes</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+                </a>
+                <a href="#contato" class="mobile-link py-2 flex items-center justify-between">
+                    <span>Endereço & Como Chegar</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+                </a>
+                <a href="https://wa.me/5581999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o!" 
+                   target="_blank" 
+                   class="flex items-center justify-center gap-2 w-full py-3 mt-2 rounded-xl bg-emerald-600 text-white font-bold text-sm shadow-md">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Conversar Agora no WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative min-h-[85vh] sm:min-h-[80vh] flex items-center bg-cover bg-center py-10 sm:py-16"
+             style="background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80');">
+        <!-- Overlay engineered for mobile readability in any ambient lighting -->
+        <div class="absolute inset-0 hero-mobile-overlay"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                
+                <!-- Left Hero Details -->
+                <div class="lg:col-span-7 text-white space-y-4 sm:space-y-6 text-left">
+                    
+                    <!-- Trust Badge -->
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-teal-200 text-xs sm:text-sm font-semibold">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span>Nota 4.9 ★ no Google (+850 avaliações)</span>
+                    </div>
+
+                    <!-- Mobile-First Main Heading -->
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2]">
+                        Seu dentista de confiança com <span class="text-teal-300">atendimento sem dor</span> e acolhedor.
+                    </h1>
+
+                    <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-normal max-w-xl">
+                        Especialistas em devolver sua segurança ao sorrir e mastigar. Chega de medo de dentista: aqui cuidamos de você com tecnologia digital e anestesia computadorizada sem dor.
+                    </p>
+
+                    <!-- Mobile Quick-Tap Service Chips (1-Click trigger) -->
+                    <div class="space-y-2 pt-1">
+                        <p class="text-xs text-teal-200 font-semibold tracking-wide uppercase">
+                            Toque no tratamento para falar direto no WhatsApp:
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="sendQuickWhatsApp('Estou com dor ou urgência odontológica')" 
+                                    class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-rose-500/30 hover:bg-rose-500/40 border border-rose-400/50 text-rose-100 text-xs font-semibold backdrop-blur-sm transition active:scale-95">
+                                <i class="fa-solid fa-bolt text-rose-300"></i>
+                                <span>Dor de Dente / Urgência</span>
+                            </button>
+                            <button onclick="sendQuickWhatsApp('Tenho interesse em Clareamento Dental')" 
+                                    class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white text-xs font-medium backdrop-blur-sm transition active:scale-95">
+                                <i class="fa-solid fa-wand-magic-sparkles text-teal-300"></i>
+                                <span>Clareamento</span>
+                            </button>
+                            <button onclick="sendQuickWhatsApp('Quero saber sobre Alinhadores Invisíveis')" 
+                                    class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white text-xs font-medium backdrop-blur-sm transition active:scale-95">
+                                <i class="fa-solid fa-tooth text-teal-300"></i>
+                                <span>Alinhador Invisível</span>
+                            </button>
+                            <button onclick="sendQuickWhatsApp('Gostaria de agendar Limpeza e Check-up')" 
+                                    class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white text-xs font-medium backdrop-blur-sm transition active:scale-95">
+                                <i class="fa-solid fa-shield-halved text-teal-300"></i>
+                                <span>Limpeza & Prevenção</span>
+                            </button>
+                            <button onclick="sendQuickWhatsApp('Quero informações sobre Implantes Dentários')" 
+                                    class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white text-xs font-medium backdrop-blur-sm transition active:scale-95">
+                                <i class="fa-solid fa-circle-check text-teal-300"></i>
+                                <span>Implantes & Próteses</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Main WhatsApp Big Button -->
+                    <div class="pt-3">
+                        <a href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Encontrei%20o%20site%20e%20gostaria%20de%20conversar%20sobre%20uma%20avalia%C3%A7%C3%A3o%20odontol%C3%B3gica."
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-whatsapp hover:bg-whatsapp-hover text-white text-base sm:text-lg font-bold shadow-xl shadow-emerald-950/40 active:scale-95 transition-all">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Falar Conosco no WhatsApp</span>
+                        </a>
+                        <p class="text-[11px] text-teal-200/80 mt-2 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                            <span>Atendimento ágil de segunda a sábado</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 mt-2 lg:mt-0">
+                    <div class="bg-white rounded-3xl p-5 sm:p-7 shadow-2xl border border-slate-100 text-slate-800">
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <h2 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Agendar Consulta</h2>
+                                <p class="text-xs text-slate-500">Respondemos em poucos minutos</p>
+                            </div>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[11px] font-bold rounded-full border border-emerald-200">
+                                WhatsApp Direto
+                            </span>
+                        </div>
+
+                        <form id="mobileBookingForm" onsubmit="handleQuickBooking(event)" class="space-y-3.5">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Seu Nome</label>
+                                <div class="relative">
+                                    <i class="fa-regular fa-user absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                                    <input type="text" id="patientName" required placeholder="Como podemos te chamar?" 
+                                           class="w-full pl-10 pr-3 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none text-sm transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Seu WhatsApp</label>
+                                <div class="relative">
+                                    <i class="fa-brands fa-whatsapp absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                                    <input type="tel" id="patientPhone" required placeholder="(DDD) 99999-9999" 
+                                           class="w-full pl-10 pr-3 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none text-sm transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">O que você precisa hoje?</label>
+                                <select id="treatmentType" class="w-full px-3 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none text-sm bg-white text-slate-700 transition">
+                                    <option value="Check-up Geral & Limpeza">Check-up Geral & Limpeza</option>
+                                    <option value="Clareamento Dental">Clareamento Dental</option>
+                                    <option value="Alinhadores Invisíveis">Alinhadores Invisíveis</option>
+                                    <option value="Implantes & Próteses">Implantes & Próteses</option>
+                                    <option value="Facetas e Lentes">Facetas e Lentes em Resina/Porcelana</option>
+                                    <option value="Urgência ou Dor">Estou com Dor ou Urgência</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/30 flex items-center justify-center gap-2 active:scale-95 transition">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Iniciar Conversa no WhatsApp</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-12 sm:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-brand-700 font-bold tracking-wider text-xs uppercase bg-brand-50 px-3 py-1 rounded-full border border-brand-100">
+                    Por Que Nos Escolher
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+                    Odontologia feita para você se sentir seguro
+                </h2>
+                <p class="text-slate-500 text-xs sm:text-sm mt-2">
+                    Esqueça tudo o que você já associou a dor ou desconforto em consultórios dentários.
+                </p>
+            </div>
+
+            <!-- Mobile Grid / Columns -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                
+                <!-- Benefit 1 -->
+                <div class="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-teal-100 text-brand-700 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Anestesia Sem Dor</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mt-1">
+                            Dispositivos computadorizados modernos que aplicam a anestesia de forma suave e imperceptível.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-teal-100 text-brand-700 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-camera-rotate"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Scanner Digital 3D</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mt-1">
+                            Sem massas de moldagem que causam náusea. Seu sorriso é capturado em alta definição na tela.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4 sm:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 rounded-xl bg-teal-100 text-brand-700 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">Zero Atrasos</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mt-1">
+                            Consultas agendadas com pontualidade para que você não perca seu dia esperando na recepção.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="tratamentos" class="py-12 sm:py-16 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
+                <div>
+                    <span class="text-brand-700 font-bold tracking-wider text-xs uppercase bg-brand-100/50 px-3 py-1 rounded-full">
+                        Especialidades
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+                        Tratamentos em Destaque
+                    </h2>
+                </div>
+                <p class="text-slate-500 text-xs sm:text-sm mt-1 sm:mt-0">
+                    Toque no card para falar com o especialista
+                </p>
+            </div>
+
+            <!-- Horizontal Scroll on Mobile (with snap), Grid on Desktop -->
+            <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible hide-scrollbar">
+                
+                <!-- Treatment 1 -->
+                <div class="min-w-[82vw] sm:min-w-0 snap-center bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                    <div class="h-44 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=700&q=80" 
+                             alt="Clareamento Dental" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/600x400/0d9488/ffffff?text=Clareamento+Dental'">
+                        <span class="absolute top-3 left-3 bg-white/95 text-brand-800 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">
+                            Estética
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">Clareamento a Laser & Caseiro</h3>
+                            <p class="text-slate-600 text-xs mt-1 leading-relaxed">
+                                Dentes brancos com acabamento natural e protocolo sem sensibilidade.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Gostaria%20de%20saber%20valores%20e%20detalhes%20do%20Clareamento%20Dental." 
+                           target="_blank" 
+                           class="mt-4 w-full py-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Consultar no WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 2 -->
+                <div class="min-w-[82vw] sm:min-w-0 snap-center bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                    <div class="h-44 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=700&q=80" 
+                             alt="Alinhadores Invisíveis" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/600x400/0d9488/ffffff?text=Alinhador+Invisivel'">
+                        <span class="absolute top-3 left-3 bg-white/95 text-brand-800 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">
+                            Ortodontia Digital
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">Alinhadores Transparentes</h3>
+                            <p class="text-slate-600 text-xs mt-1 leading-relaxed">
+                                Corrija seus dentes sem aparelhos fixos e sem machucar a boca.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20avalia%C3%A7%C3%A3o%20para%20Alinhadores%20Invis%C3%ADveis." 
+                           target="_blank" 
+                           class="mt-4 w-full py-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Consultar no WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 3 -->
+                <div class="min-w-[82vw] sm:min-w-0 snap-center bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                    <div class="h-44 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=700&q=80" 
+                             alt="Implantes Dentários" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/600x400/0d9488/ffffff?text=Implantes+Dentarios'">
+                        <span class="absolute top-3 left-3 bg-white/95 text-brand-800 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">
+                            Reabilitação
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">Implantes & Próteses Fixas</h3>
+                            <p class="text-slate-600 text-xs mt-1 leading-relaxed">
+                                Volte a comer de tudo com segurança e recupere dentes perdidos.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20Implantes%20Dent%C3%A1rios." 
+                           target="_blank" 
+                           class="mt-4 w-full py-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Consultar no WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 4 -->
+                <div class="min-w-[82vw] sm:min-w-0 snap-center bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                    <div class="h-44 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=700&q=80" 
+                             alt="Lentes de Contato Dental" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/600x400/0d9488/ffffff?text=Lentes+de+Contato'">
+                        <span class="absolute top-3 left-3 bg-white/95 text-brand-800 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">
+                            Harmonização
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">Lentes & Facetas</h3>
+                            <p class="text-slate-600 text-xs mt-1 leading-relaxed">
+                                Harmonize formato, tamanho e cor dos dentes com lâminas ultrafinas.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20Facetas%20e%20Lentes." 
+                           target="_blank" 
+                           class="mt-4 w-full py-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Consultar no WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Treatment 5 -->
+                <div class="min-w-[82vw] sm:min-w-0 snap-center bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                    <div class="h-44 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=700&q=80" 
+                             alt="Atendimento de Urgência" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/600x400/0d9488/ffffff?text=Urgencia+Dentaria'">
+                        <span class="absolute top-3 left-3 bg-rose-100 text-rose-800 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">
+                            Alívio Imediato
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">Plantão de Urgência & Dor</h3>
+                            <p class="text-slate-600 text-xs mt-1 leading-relaxed">
+                                Está sentindo dor forte ou quebrou um dente? Priorizamos seu atendimento.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5581999999999?text=SOS%20-%20Preciso%20de%20atendimento%20urgente%20com%20o%20dentista!" 
+                           target="_blank" 
+                           class="mt-4 w-full py-2.5 rounded-xl bg-rose-50 text-rose-700 hover:bg-rose-100 font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-solid fa-bolt text-rose-600"></i>
+                            <span>Pedir Socorro Imediato</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="py-12 sm:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <span class="text-brand-700 font-bold tracking-wider text-xs uppercase bg-brand-50 px-3 py-1 rounded-full">
+                    Avaliações Reais
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+                    Quem foi, recomenda de olhos fechados
+                </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Testimonial 1 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-xs gap-1 mb-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-xs sm:text-sm leading-relaxed italic">
+                            "Eu tremia só de pensar em ir ao dentista. Aqui fizeram todo o procedimento sem eu sentir absolutamente nada! O contato pelo WhatsApp foi super atencioso."
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-200 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-teal-200 text-teal-900 font-bold flex items-center justify-center text-xs">
+                            CS
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-900">Camila Silveira</p>
+                            <p class="text-[11px] text-slate-500">Alinhadores Invisíveis</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-xs gap-1 mb-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-xs sm:text-sm leading-relaxed italic">
+                            "Fiz clareamento para o casamento e ficou perfeito, sem aquela sensibilidade horrível que tive em outro lugar anos atrás. Recomendo demais!"
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-200 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-teal-200 text-teal-900 font-bold flex items-center justify-center text-xs">
+                            RB
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-900">Rodrigo Barreto</p>
+                            <p class="text-[11px] text-slate-500">Clareamento Dental</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+                    <div>
+                        <div class="flex text-amber-400 text-xs gap-1 mb-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-xs sm:text-sm leading-relaxed italic">
+                            "A praticidade de tirar dúvidas no WhatsApp e a atenção dos doutores fazem toda a diferença. O espaço é muito limpo e bem localizado."
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-200 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-teal-200 text-teal-900 font-bold flex items-center justify-center text-xs">
+                            AL
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-900">Ana Lúcia Gomes</p>
+                            <p class="text-[11px] text-slate-500">Implantes & Prótese</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-12 bg-slate-50 border-t border-slate-200/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="text-brand-700 font-bold text-xs uppercase tracking-wider bg-brand-50 px-3 py-1 rounded-full">
+                            Fácil Acesso
+                        </span>
+                        <h2 class="text-2xl font-bold text-slate-900 mt-2">Venha nos visitar</h2>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                            Estacionamento privativo com manobrista e prédio acessível.
+                        </p>
+
+                        <div class="space-y-3.5 mt-5">
+                            <div class="flex items-start gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-teal-50 text-brand-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-location-dot text-sm"></i>
+                                </div>
+                                <div class="text-xs sm:text-sm">
+                                    <p class="font-bold text-slate-900">Av. Domingos Ferreira, 1500 - Sala 804</p>
+                                    <p class="text-slate-500">Boa Viagem, Recife - PE</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-teal-50 text-brand-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-clock text-sm"></i>
+                                </div>
+                                <div class="text-xs sm:text-sm">
+                                    <p class="font-bold text-slate-900">Horário de Funcionamento</p>
+                                    <p class="text-slate-500">Seg a Sex: 08h às 19h | Sáb: 08h às 13h</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1-Tap GPS Navigation buttons -->
+                        <div class="flex flex-wrap gap-2 pt-5">
+                            <a href="https://maps.google.com/?q=Boa+Viagem+Recife+PE" target="_blank" 
+                               class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition">
+                                <i class="fa-solid fa-diamond-turn-right text-brand-600"></i>
+                                <span>Abrir no Google Maps</span>
+                            </a>
+                            <a href="https://waze.com/ul?q=Boa+Viagem+Recife+PE" target="_blank" 
+                               class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition">
+                                <i class="fa-brands fa-waze text-sky-600"></i>
+                                <span>Abrir no Waze</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mini CTA Map Visual Box -->
+                    <div class="rounded-2xl overflow-hidden border border-slate-200 relative h-48 sm:h-60 bg-cover bg-center flex items-center justify-center p-4 text-center"
+                         style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=700&q=80');">
+                        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-[1px]"></div>
+                        <div class="relative z-10 text-white space-y-2 max-w-xs">
+                            <i class="fa-solid fa-map-location-dot text-3xl text-teal-300"></i>
+                            <p class="font-bold text-sm">Clínica Sorriso Radiante</p>
+                            <p class="text-xs text-slate-200">Clique para falar no WhatsApp e reservar seu horário</p>
+                            <a href="https://wa.me/5581999999999" target="_blank" class="inline-block mt-2 px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-md">
+                                Iniciar Conversa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-3">
+            <div class="flex items-center justify-center gap-2 text-white font-bold text-base">
+                <i class="fa-solid fa-tooth text-brand-500"></i>
+                <span>Sorriso Radiante</span>
+            </div>
+            <p class="text-slate-500">CRO-PE Resp. Técnico nº 00000 • Recife/PE</p>
+            <p class="text-slate-600 text-[11px]">© 2026 Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 backdrop-blur-md border-t border-slate-200 p-2.5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] flex items-center gap-2.5">
+        <!-- Direct Phone Call Button -->
+        <a href="tel:5581999999999" 
+           aria-label="Ligar para a clínica"
+           class="flex items-center justify-center w-12 h-12 rounded-2xl bg-slate-100 text-slate-700 hover:bg-slate-200 shrink-0 border border-slate-200 active:scale-95 transition">
+            <i class="fa-solid fa-phone text-lg"></i>
+        </a>
+
+        <!-- Big Primary WhatsApp Bar Button (Takes up remaining thumb space) -->
+        <a href="https://wa.me/5581999999999?text=Ol%C3%A1%2C%20estou%20no%20site%20e%20gostaria%20de%20falar%20com%20um%20atendente." 
+           target="_blank"
+           class="flex-1 h-12 rounded-2xl bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 active:scale-95 transition">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span>Agendar pelo WhatsApp</span>
+        </a>
+    </div>
+
+    <div class="hidden md:flex fixed bottom-6 right-6 z-50 items-center gap-3">
+        <div class="bg-white px-3.5 py-2 rounded-2xl shadow-lg border border-slate-100 text-slate-700 text-xs font-semibold flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span>Online agora!</span>
+        </div>
+        <a href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Visitei%20o%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida."
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Fale conosco no WhatsApp"
+           class="w-16 h-16 rounded-full bg-whatsapp hover:bg-whatsapp-hover text-white flex items-center justify-center text-3xl shadow-xl shadow-emerald-600/40 hover:scale-110 active:scale-95 transition-all">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        const CLINIC_WHATSAPP = "5581999999999";
+
+        // Quick WhatsApp trigger from chips
+        function sendQuickWhatsApp(service) {
+            const message = `Olá! Estava navegando no site e: ${service}. Como posso agendar ou saber mais?`;
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/${CLINIC_WHATSAPP}?text=${encoded}`, '_blank');
+        }
+
+        // Mobile Form submit handler
+        function handleQuickBooking(event) {
+            event.preventDefault();
+            const name = document.getElementById('patientName').value.trim();
+            const phone = document.getElementById('patientPhone').value.trim();
+            const treatment = document.getElementById('treatmentType').value;
+
+            const textMessage = `Olá! Meu nome é ${name} (${phone}). Vi o site e gostaria de agendar uma consulta para: ${treatment}.`;
+            const encodedText = encodeURIComponent(textMessage);
+            window.open(`https://wa.me/${CLINIC_WHATSAPP}?text=${encodedText}`, '_blank');
+        }
+
+        // Mobile drawer toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-xmark');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
